@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmbms.mapper.WarehouseMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        warehouse_id, warehouse_code, warehouse_name, warehouse_leaseTime, warehouse_type_id, department_id, warehouse_isEnabled, warehouse_isDefault, warehouse_areaSize, warehouse_contacts, warehouse_phone, warehouse_adderss, warehouse_effect
+    </sql>
+
+</mapper>

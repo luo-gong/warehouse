@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmbms.mapper.SupplierMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        supplier_id, supplier_code, supplier_companyName, supplier_type_id, supplier_contactName, supplier_address, supplier_emailCode, supplier_phone, supplier_fax, supplier_remarks, supplier_createdate
+    </sql>
+
+</mapper>

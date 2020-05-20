@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmbms.mapper.StorehouseMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        storehouse_id, storehouse_code, storehouse_name, storehouse_type_id, warehouse_id, storehouse_isEnabled, storehouse_isDelete, storehouse_isDefault, storehouse_careateDate, storehouse_remarks
+    </sql>
+
+</mapper>

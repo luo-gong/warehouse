@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmbms.mapper.ProductTypeMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        product_type_id, product_type_code, product_type_name, product_type_level, product_type_parentid, product_type_careateDate, product_type_remarks
+    </sql>
+
+</mapper>

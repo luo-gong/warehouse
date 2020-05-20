@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmbms.mapper.CustomerMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        customer_id, customer_Code, customer_name, customer_contactName, customer_address, customer_emailCode, customer_phone, customer_fax, customer_remarks, customer_createDate
+    </sql>
+
+</mapper>
