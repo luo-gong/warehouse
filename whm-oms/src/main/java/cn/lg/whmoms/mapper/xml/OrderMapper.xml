@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lg.whmoms.mapper.OrderMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_id, order_code, product_id, order_number, product_price, order_product_price_sum, order_price_sum, supplier_id, supplier_companyName, supplier_code, order_isPayment, order_state, order_outlibrary, order_createuser, order_createtime, order_isreturngoods/returngoodHtmls, order_auditor_state, order_auditor, order_auditor_time
+    </sql>
+
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lg.whmoms.mapper.ReturnSaleMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        return_sale_id, return_sale_code, sale_code, order_id, order_code, order_number, order_product_price_sum, order_state, product_id, product_code, product_name, product_spec, product_price, metering_id, customer_id, customer_code, customer_name, customer_phone, customer_contactName, sale_remarks, sale_createuser, return_sale_createtime, return_sale_isDelete
+    </sql>
+
+</mapper>
