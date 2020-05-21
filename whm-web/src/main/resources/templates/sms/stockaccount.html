@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>库存台账</title>
+</head>
+<body>
+<h1>库存台账</h1>
+<div th:align="center">
+    <form th:href="@{/ledger/ledgerHtml}" th:method="get">
+        产品编号：
+        <input th:name="productCode" id="productCode" th:value="${ledgerTo.productCode}" placeholder="请输入产品编号">
+        产品名称：
+        <input th:name="productName" id="productName" th:value="${ledgerTo.productName}" placeholder="请输入扫描产品名称">
+        仓库：
+        <select name="warehouseEndId" id="warehouseEndId">
+            <option value="">请选择</option>
+            <option th:selected="${ledgerTo.warehouseEndId}==${warehouse.warehouseId}"
+                    th:each="warehouse : ${warehouses}"
+                    th:value="${warehouse.warehouseId}">
+                [[${warehouse.warehouseName}]]
+            </option>
+        </select>
+        产品批次：
+        <input th:name="productBatch" id="productBatch" th:value="${ledgerTo.productBatch}" placeholder="请输入扫描产品批次">
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input name="current" type="hidden" th:value="${current}">
+        <input name="easypoi" type="submit" value="导出">
+    </form>
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>产品编号</th>
+            <th>产品名称</th>
+            <th>产品规格</th>
+            <th>类型</th>
+            <th>仓库</th>
+            <th>数量</th>
+            <th>单位</th>
+            <th>原库位</th>
+            <th>目标仓库</th>
+            <th>目标库位</th>
+            <th>日期</th>
+        </tr>
+        <tr th:each="ledger : ${ledgers}">
+            <td th:text="${ledger.ledgerId}"></td>
+            <td th:text="${ledger.productCode}"></td>
+            <td th:text="${ledger.productName}"></td>
+            <td th:text="${ledger.productSpec}"></td>
+            <td th:text="${ledger.ledgerType}==0?'移库-出':'移库-入'"></td>
+            <td th:text="${ledger.warehouseStartName}"></td>
+            <td th:text="${ledger.orderNumber}"></td>
+            <td th:text="${ledger.meteringIdName}"></td>
+            <td th:text="${ledger.storehouseStartName}"></td>
+            <td th:text="${ledger.warehouseEndName}"></td>
+            <td th:text="${ledger.storehouseEndName}"></td>
+            <td th:text="${#dates.format(ledger.ledgerCreatetime,'yyyy-MM-dd')}"></td>
+        </tr>
+    </table>
+    <a href="javascript:;" onclick="aClick(this)" th:id="${itemIndex.index+1}" th:each="page,itemIndex : ${page}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/sms/stockaccount.js"></script>
+</body>
+</html>

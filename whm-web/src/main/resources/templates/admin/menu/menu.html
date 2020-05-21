@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>权限管理</title>
+    </head>
+    <body>
+        <h1>权限管理</h1>
+        <div th:align="center">
+            <form th:action="@{/menu/menuHtml}" th:method="get">
+                名称：
+                <input th:name="name" type="text" th:value="${name}">
+                pattern：
+                <input th:name="pattern" type="text" th:value="${pattern}">
+                <input name="submit" type="submit" value="查询">
+                <input name="reset" type="reset" value="重置">
+                <input id="menuadd" value="新增" type="button">
+            </form>
+            <table border="1" width="900">
+                <tr>
+                    <th>
+                        <input type="checkbox">
+                    </th>
+                    <th>名称 </th>
+                    <th>权限 </th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="menu : ${menus}">
+                    <td align="center">
+                        <input type="checkbox" th:value="${menu.id}">
+                    </td>
+                    <td align="center" th:text="${menu.name}"></td>
+                    <td align="center" th:text="${menu.pattern}"></td>
+                    <td align="center">
+                        <span class="update" th:id="${menu.id}">编辑</span>
+                        <span class="delete" th:id="${menu.id}">删除</span>
+                    </td>
+                </tr>
+            </table>
+            <a th:href="@{/menu/menuHtml(page=${itemIndex.index})}" th:each="page,itemIndex : ${pages}"
+               th:text="${itemIndex.index+1}"></a>
+        </div>
+        <script src="/resource/jquery-1.12.4.js"></script>
+        <script src="/resource/custormer/menu/menu.js"></script>
+    </body>
+</html>

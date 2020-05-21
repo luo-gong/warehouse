@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编辑入库</title>
+</head>
+<body>
+<h1>编辑入库</h1>
+
+<div th:align="center">
+    <form method="post" th:action="@{/inhouse/updateInHouse}">
+        <input type="hidden" name="supplierId" id="supplierId_input">
+        <input type="hidden" name="orderId" th:value="${inwarehouse.orderId}">
+        <input type="hidden" name="order.orderId" th:value="${inwarehouse.orderId}">
+        <input type="hidden" name="inwarehouseId" th:value="${inwarehouse.inwarehouseId}">
+        <hr/>
+        <h2>编辑入库单</h2>
+        <table border="1">
+            <tr>
+                <td>入库单号</br><input readonly type="text" name="inwarehouseCode"
+                                    th:value="${inwarehouse.inwarehouseCode}"></td>
+                <td>* 入库单类型</br>
+                    <select name="inwarehouseType">
+                        <option th:each="inwarehouseType : ${inwarehouseTypes}"
+                                th:value="${inwarehouseType.inwarehouseTypeId}">
+                            [[${inwarehouseType.inwarehouseTypeName}]]
+                        </option>
+                    </select>
+                </td>
+                <td>关联订单号</br><input readonly type="text" name="orderCode" th:value="${inwarehouse.orderCode}"></td>
+            </tr>
+            <tr>
+                <td>*供应商编号</br>
+                    <select name="supplierCode" id="supplierCode_select">
+                        <option value="">请选择</option>
+                        <option th:each="supplier:${suppliers}"
+                                th:text="${supplier.supplierCode}"
+                                th:value="${supplier.supplierCode}"
+                                th:selected="${inwarehouse.supplierId}==${supplier.supplierId}"></option>
+                    </select>
+                </td>
+                <td>*供应商名称</br><input readonly type="text" name="supplierCompanyname" id="supplierCompanyname_input"
+                                      th:value="${inwarehouse.supplierCompanyname}"></td>
+                <td>供应商联系人</br><input readonly type="text" name="supplierContactname" id="supplierContactName_input"
+                                      th:value="${inwarehouse.supplierContactname}"></td>
+            </tr>
+            <tr>
+                <td>*供应商联系方式</br><input type="text" name="supplierPhone" th:value="${inwarehouse.supplierPhone}"
+                                        id="supplierPhone_input">
+                </td>
+                <td>制单人</br><input type="text" name="orderCreateuser" th:value="${inwarehouse.orderCreateuser}"></td>
+                <td>制单时间</br><input type="text" readonly
+                                    th:value="${#dates.format(inwarehouse.orderCreatetime,'yyyy-MM-dd')}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan=" 3">备注</br><input type="text" name="orderRemarks" th:value="${inwarehouse.orderRemarks}">
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>入库产品信息</h2>
+        <table border="1">
+            <tr class="productTr">
+                <td></td>
+                <td> 产品名称</td>
+                <td> 产品编码</td>
+                <td> 规格</td>
+                <td> 批次</td>
+                <td> 单价</td>
+                <td> 入库数</td>
+                <td> 总价</td>
+                <td>库位</td>
+            </tr>
+            <tr class="productTr">
+                <td><input size="1" readonly="readonly" type="text" name="productId"
+                           th:value="${inwarehouse.productId}"></td>
+                <td><input size="5" readonly type="text" name="productName" th:value="${inwarehouse.productName}"></td>
+                <td><input size="5" readonly type="text" name="productCode" th:value="${inwarehouse.productCode}"></td>
+                <td><input size="3" readonly type="text" name="productSpec" th:value="${inwarehouse.productSpec}"></td>
+                <td><input size="5" type="text" name="productBatch" th:value="${inwarehouse.productBatch}"></td>
+                <td><input size="3" type="text" name="productPrice" th:value="${inwarehouse.productPrice}"
+                           id="productPrice_input"></td>
+                <td><input size="3" type="text" name="orderNumber" th:value="${inwarehouse.orderNumber}"
+                           id="orderNumber_input"></td>
+                <td><input readonly size="2" type="text" name="orderProductPriceSum"
+                           th:value="${inwarehouse.orderProductPriceSum}" id="orderProductPriceSum"></td>
+                <td><input size="1" type="text" name="storehouseId" th:value="${inwarehouse.storehouseId}">[[${inwarehouse.storehouseName}]]
+            </tr>
+        </table>
+        <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="取消">
+    </form>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/inhouseUpdate.js"></script>
+</body>
+</html>

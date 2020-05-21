@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>新增出库</title>
+</head>
+<body>
+<h1>新增出库</h1>
+
+<div th:align="center">
+    <form method="post" th:action="@{/outhouse/outhouseadd}">
+        <input type="hidden" name="customerId" id="customerId_input">
+        <hr/>
+        <h2>新增出库单</h2>
+        <table border="1">
+            <tr>
+                <td>出库单号</br><input type="text" name="outwarehouseCode" placeholder="可不填写，自动生成"></td>
+                <td>* 出库单类型</br>
+                    <select type="text" name="outwarehouseTypeId">
+                        <option th:each="outwarehouseType : ${outwarehouseTypes}"
+                                th:value="${outwarehouseType.outwarehouseTypeId}">
+                            [[${outwarehouseType.outwarehouseTypeName}]]
+                        </option>
+                    </select>
+                </td>
+                <td>关联订单号</br><input type="text" name="orderCode" placeholder="可不填写，自动生成"></td>
+            </tr>
+            <tr>
+                <td>*客户编号</br><select name="customerCode" id="customerCode_select">
+                    <option value="">请选择</option>
+                    <option th:each="customer:${customers}" th:text="${customer.customerCode}"></option>
+                </select></td>
+                <td>* 客户名称</br><input type="text" name="customerName" id="customerName_input"></td>
+                <td>客户联系人</br><input type="text" name="customerContactName" id="customerContactName_input"></td>
+            </tr>
+            <tr>
+                <td>* 客户联系方式</br><input type="text" name="customerPhone" id="customerPhone_input"
+                                        placeholder="请输入关键词搜索或者双击选择"></td>
+                <td>制单人</br><input type="text" name="orderCreateuser"></td>
+                <td>制单时间</br><input type="text" name="orderCreatetime"></td>
+            </tr>
+            <tr>
+                <td colspan="3">备注</br><input type="text" name="orderRemarks" placeholder="请输入关键词搜索或者双击选择"></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>出库产品信息</h2>
+        <table border="1" id="table">
+            <tr bgcolor="#a9a9a9">
+                <th colspan="10">产品编号：<input type="text" id="productCode">
+                    产品名称：<input type="text" id="productName">
+                    <input type="button" id="product_input" value="搜索"></th>
+            </tr>
+            <tr class="productTr">
+                <td><input type="checkbox" name="productId" value=""></td>
+                <td> 产品名称</td>
+                <td> 产品编码</td>
+                <td> 规格</td>
+                <td> 批次</td>
+                <td> 单价</td>
+                <td> 出库数</td>
+                <td> 总价</td>
+                <td> 库位</td>
+            </tr>
+        </table>
+        <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="取消">
+    </form>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/outhouseadd.js"></script>
+</body>
+</html>

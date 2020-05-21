@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>退货管理</title>
+</head>
+<body>
+<h1>退货管理</h1>
+<div th:align="center">
+    <form th:href="@{/returngoods/returngoodHtml}" th:method="get">
+        退货单号：
+        <input th:name="returnGoodsCode" th:value="${returngoodsTo.returnGoodsCode}" placeholder="请输入退货单号">
+        采购单号：
+        <input th:name="buyCode" th:value="${returngoodsTo.buyCode}" placeholder="请输入采购单号">
+        产品名称：
+        <input th:name="productName" th:value="${returngoodsTo.productName}" placeholder="请输入产品名称">
+        订单状态：
+        <select name="orderAuditorId">
+            <option value="">请选择</option>
+            <option th:selected="${returngoodsTo.orderAuditorId}==${orderAuditor.orderAuditorId}"
+                    th:each="orderAuditor : ${orderAuditors}"
+                    th:value="${orderAuditor.orderAuditorId}">
+                [[${orderAuditor.orderAuditorName}]]
+            </option>
+        </select>
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input id="returngoodsadd" value="新增" type="button">
+        <input id="returngoodsdelete" value="删除" type="button">
+    </form>
+    <table border="1">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>退货单号 </th>
+            <th>产品名称 </th>
+            <th>产品编号</th>
+            <th>规格</th>
+            <th>单位</th>
+            <th>单价</th>
+            <th>退货数量</th>
+            <th>总额</th>
+            <th>采购单号</th>
+            <th>供应商名称</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="returngoods : ${returnGoodss}">
+            <td><input type="checkbox"></td>
+            <td th:text="${returngoods.returnGoodsCode}"></td>
+            <td th:text="${returngoods.productName}"></td>
+            <td th:text="${returngoods.productCode}"></td>
+            <td th:text="${returngoods.productSpec}"></td>
+            <td th:text="${returngoods.meteringIdStore}"></td>
+            <td th:text="${returngoods.productPrice}"></td>
+            <td th:text="${returngoods.orderNumber}"></td>
+            <td th:text="${returngoods.orderProductPriceSum}"></td>
+            <td th:text="${returngoods.buyCode}"></td>
+            <td th:text="${returngoods.supplieCompanyname}"></td>
+            <td th:text="${returngoods.orderState}"></td>
+            <td th:text="${#dates.format(returngoods.returnGoodsCreatetime,'yyyy-MM-dd')}"></td>
+            <td>
+                <span class="find" th:id="${returngoods.returnGoodsId}">查看</span>
+                <span class="update" th:id="${returngoods.returnGoodsId}">编辑</span>
+                <span class="delete" th:id="${returngoods.returnGoodsId}">删除</span>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/returngoods/returngoods/returngoodHtmlHtml(current=${itemIndex.index+1})}"
+       th:each="page,itemIndex : ${page}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/oms/returngood.js"></script>
+</body>
+</html>

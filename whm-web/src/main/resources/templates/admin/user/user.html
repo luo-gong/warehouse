@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+</head>
+<body>
+<h1>用户管理</h1>
+<div th:align="center">
+    <form th:href="@{/user/userHtml}" th:method="get">
+        用户名：
+        <input th:name="username" type="text" th:value="${username}">
+        工号：
+        <input th:name="userId" type="text" th:value="${userId}">
+        角色：
+        <select name="roleId">
+            <option value="">请选择</option>
+            <option th:each="role : ${roles}"
+                    th:value="${role.id}">
+                [[${role.nameZh}]]
+            </option>
+        </select>
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input id="useradd" value="新增" type="button">
+        <input id="userdelete" value="删除" type="button">
+    </form>
+    <table border="1" width="900">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>用户名 </th>
+            <th>工号 </th>
+            <th>邮箱</th>
+            <th>电话</th>
+            <th>角色</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td align="center"><input type="checkbox" th:value="${user.id}"></td>
+            <td align="center" th:text="${user.username}"></td>
+            <td align="center" th:text="${user.id}"></td>
+            <td align="center" th:text="${user.email}"></td>
+            <td align="center" th:text="${user.mobile}"></td>
+            <td align="center">
+                <span th:each="role : ${user.roles}" th:text="${role.nameZh}"></span>
+            </td>
+            <td align="center">
+                <span class="find" th:id="${user.id}">查看</span>
+                <span class="update" th:id="${user.id}">编辑</span>
+                <span class="delete" th:id="${user.id}">删除</span>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/user/userHtml(page=${itemIndex.index})}" th:each="page,itemIndex : ${pages}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/user/user.js"></script>
+</body>
+</html>

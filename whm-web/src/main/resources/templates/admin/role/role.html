@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>角色管理</title>
+</head>
+<body>
+<h1>角色管理</h1>
+<div th:align="center">
+    <form th:action="@{/role/roleHtml}" th:method="get">
+        角色名：
+        <input th:name="nameZh" type="text" th:value="${nameZh}">
+        备注：
+        <input th:name="remarks" type="text" th:value="${remarks}">
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input id="roleadd" value="新增" type="button">
+        <input id="roledelete" value="删除" type="button">
+    </form>
+    <table border="1" width="900">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>角色名 </th>
+            <th>创建时间 </th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="role : ${roles}">
+            <td align="center"><input type="checkbox" th:value="${role.id}"></td>
+            <td align="center" th:text="${role.nameZh}"></td>
+            <td align="center" th:text="${role.createdate}"></td>
+            <td align="center" th:text="${role.remarks}">
+            </td>
+            <td align="center">
+                <span class="update" th:id="${role.id}">编辑</span>
+                <span class="delete" th:id="${role.id}">删除</span>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/role/roleHtml(page=${itemIndex.index})}" th:each="page,itemIndex : ${pages}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/role/role.js"></script>
+</body>
+</html>

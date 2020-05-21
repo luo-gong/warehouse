@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>入库</title>
+</head>
+<body>
+<h1>入库管理</h1>
+<div th:align="center">
+    <form th:href="@{/inhouse/inhouseHtml}" th:method="get">
+        单据类型：
+        <select name="orderAuditorState">
+            <option value="">请选择</option>
+            <option th:selected="${librarstate.librarstateId}==${orderAuditorState}"
+                    th:each="librarstate : ${librarstates}" th:value="${librarstate.librarstateId}">
+                [[${librarstate.librarstateName}]]
+            </option>
+        </select>
+        入库单状态：
+        <select name="inwarehouseTypeId">
+            <option value="">请选择</option>
+            <option th:selected="${inwarehouseTypeId}==${inwarehouseType.inwarehouseTypeId}"
+                    th:each="inwarehouseType : ${inwarehouseTypes}"
+                    th:value="${inwarehouseType.inwarehouseTypeId}">
+                [[${inwarehouseType.inwarehouseTypeName}]]
+            </option>
+        </select>
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input id="inhouseadd" value="新增" type="button">
+        <input id="inhousedelete" value="删除" type="button">
+    </form>
+    <table border="1">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>订单号 </th>
+            <th>产品名称 </th>
+            <th>产品编号</th>
+            <th>批次</th>
+            <th>规格</th>
+            <th>数量</th>
+            <th>库位</th>
+            <th>入库类型</th>
+            <th>供应商</th>
+            <th>制单人</th>
+            <th>状态</th>
+            <th>审核人</th>
+            <th>审核时间</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="inwarehouse : ${inwarehouses.records}">
+            <td><input type="checkbox"></td>
+            <td th:text="${inwarehouse.orderCode}"></td>
+            <td th:text="${inwarehouse.productName}"></td>
+            <td th:text="${inwarehouse.productCode}"></td>
+            <td th:text="${inwarehouse.productBatch}"></td>
+            <td th:text="${inwarehouse.productSpec}"></td>
+            <td th:text="${inwarehouse.orderNumber}"></td>
+            <td th:text="${inwarehouse.storehouseName}"></td>
+            <td th:text="${inwarehouse.inwarehouseTypeId}"></td>
+            <td th:text="${inwarehouse.supplierCompanyname}"></td>
+            <td th:text="${inwarehouse.orderCreateuser}"></td>
+            <td th:text="${inwarehouse.orderAuditorState}"></td>
+            <td th:text="${inwarehouse.orderAuditor}"></td>
+            <td th:text="${#dates.format(inwarehouse.orderAuditorTime,'yyyy-MM-dd')}"></td>
+            <td>
+                <span class="find" th:id="${inwarehouse.inwarehouseId}">查看</span>
+                <span class="update" th:id="${inwarehouse.inwarehouseId}">编辑</span>
+                <span class="delete" th:id="${inwarehouse.inwarehouseId}">删除</span>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/inhouse(current=${itemIndex.index+1})}" th:each="page,itemIndex : ${pages}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/inhouse.js"></script>
+</body>
+</html>

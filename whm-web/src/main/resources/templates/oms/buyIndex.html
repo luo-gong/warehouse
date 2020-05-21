@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>采购管理</title>
+</head>
+<body>
+<h1>采购管理</h1>
+<div th:align="center">
+    <form th:href="@{/oms/omsHtml}" th:method="get">
+        采购单号：
+        <input th:name="buyCode" th:value="${buyTo.buyCode}" placeholder="请输入扫描采购单号">
+        产品编号：
+        <input th:name="productCode" th:value="${buyTo.productCode}" placeholder="请输入扫描产品编号">
+        产品名称：
+        <input th:name="productName" th:value="${buyTo.productName}" placeholder="请输入扫描产品名称">
+        订单状态：
+        <select name="orderAuditorId">
+            <option value="">请选择</option>
+            <option th:selected="${buyTo.orderAuditorId}==${orderAuditor.orderAuditorId}"
+                    th:each="orderAuditor : ${orderAuditors}"
+                    th:value="${orderAuditor.orderAuditorId}">
+                [[${orderAuditor.orderAuditorName}]]
+            </option>
+        </select>
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input id="buyadd" value="新增" type="button">
+        <input id="buydelete" value="删除" type="button">
+    </form>
+    <table border="1">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>订单号 </th>
+            <th>产品名称 </th>
+            <th>产品编号</th>
+            <th>规格</th>
+            <th>单位</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>总额</th>
+            <th>供应商编号</th>
+            <th>供应商名称</th>
+            <th>订单总额</th>
+            <th>状态</th>
+            <th>是否入账</th>
+            <th>退货</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="buy : ${buys}">
+            <td><input type="checkbox" th:value="${buy.buyId}" name=""></td>
+            <td th:text="${buy.orderCode}"></td>
+            <td th:text="${buy.productName}"></td>
+            <td th:text="${buy.productCode}"></td>
+            <td th:text="${buy.productSpec}"></td>
+            <td th:text="${buy.orderNumber}"></td>
+            <td th:text="${buy.meteringIdStore}"></td>
+            <td th:text="${buy.productPrice}"></td>
+            <td th:text="${buy.orderNumber}"></td>
+            <td th:text="${buy.orderProductPriceSum}"></td>
+            <td th:text="${buy.supplierCode}"></td>
+            <td th:text="${buy.supplierCompanyname}"></td>
+            <td th:text="${buy.orderPriceSum}"></td>
+            <td th:text="${buy.orderState}"></td>
+            <td th:text="${buy.orderIspayment}"></td>
+            <td th:text="${buy.orderIspayment}"></td>
+            <td th:text="${buy.orderIsreturngoods}"></td>
+            <td th:text="${#dates.format(buy.buyCreatetime,'yyyy-MM-dd')}"></td>
+            <td>
+                <span class="find" th:id="${buy.buyId}">查看</span>
+                <span class="update" th:id="${buy.buyId}">编辑</span>
+                <span class="delete" th:id="${buy.buyId}">删除</span>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/buy/buyHtml(current=${itemIndex.index+1})}" th:each="page,itemIndex : ${page}"
+       th:text="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/oms/buy.js"></script>
+</body>
+</html>

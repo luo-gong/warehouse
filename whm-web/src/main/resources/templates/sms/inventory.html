@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>库存清单</title>
+</head>
+<body>
+<h1>库存清单</h1>
+<div th:align="center">
+    <form th:href="@{/stock/stockHtml}" th:method="get">
+        产品编号：
+        <input th:name="productCode" id="productCode" th:value="${stockTo.productCode}" placeholder="请输入产品编号">
+        产品名称：
+        <input th:name="productName" id="productName" th:value="${stockTo.productName}" placeholder="请输入扫描产品名称">
+        仓库：
+        <select name="warehouseId" id="warehouseId">
+            <option value="">请选择</option>
+            <option th:selected="${stockTo.warehouseId}==${warehouse.warehouseId}"
+                    th:each="warehouse : ${warehouses}"
+                    th:value="${warehouse.warehouseId}">
+                [[${warehouse.warehouseName}]]
+            </option>
+        </select>
+        产品批次：
+        <input th:name="productBatch" id="productBatch" th:value="${stockTo.productBatch}" placeholder="请输入扫描产品批次">
+        <input name="submit" type="submit" value="查询">
+        <input name="reset" type="reset" value="重置">
+        <input name="current" type="hidden" th:value="${current}">
+        <input name="easypoi" type="submit" id="easyaop" value="导出">
+    </form>
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>产品编号</th>
+            <th>产品名称</th>
+            <th>产品规格</th>
+            <th>类别</th>
+            <th>单位</th>
+            <th>仓库</th>
+            <th>库位</th>
+        </tr>
+        <tr th:each="stock : ${stocks}">
+            <td th:text="${stock.stockId}"></td>
+            <td th:text="${stock.productCode}"></td>
+            <td th:text="${stock.productName}"></td>
+            <td th:text="${stock.productSpec}"></td>
+            <td th:text="${stock.productTypeName}"></td>
+            <td th:text="${stock.meteringName}"></td>
+            <td th:text="${stock.warehouseName}"></td>
+            <td th:text="${stock.storehouseName}"></td>
+        </tr>
+    </table>
+    <a href="javascript:;" onclick="aClick(this)" th:each="page,itemIndex : ${page}"
+       th:text="${itemIndex.index+1}" th:id="${itemIndex.index+1}"></a>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/sms/inventory.js"></script>
+</body>
+</html>

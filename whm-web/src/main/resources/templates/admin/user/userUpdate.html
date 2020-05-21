@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编辑用户</title>
+</head>
+<body>
+<h1>编辑用户</h1>
+<div th:align="center">
+    <form th:method="post" th:action="@{/user/userUpdate}">
+        <input type="hidden" th:value="${user.id}" name="id">
+        <table>
+            <tr>
+                <td>用户名：<br><input type="text" name="username" th:value="${user.username}"></td>
+                <td>密码：<br><input type="password" name="password" th:value="${user.password}"></td>
+                <td>角色： <br>
+                    <select name="rid">
+                        <option th:selected="${#lists.contains(user.roles,role)}?true" th:each="role:${roles}"
+                                th:value="${role.id}">
+                            [[${role.nameZh}]]
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>电话：<br><input type="text" name="mobile" th:value="${user.mobile}"></td>
+                <td>邮箱： <br><input type="text" name="email" th:value="${user.email}"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" value="提交"></td>
+                <td><input type="reset" name="reset" value="取消"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script src="/resource/jquery-1.12.4.js"></script>
+<script src="/resource/custormer/user/userUpdate.js"></script>
+</body>
+</html>
