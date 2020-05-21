@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmsms.mapper.LedgerMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ledger_id, movewarehouse_id, product_id, product_code, product_name, product_spec, product_batch, order_id, order_number, metering_id, metering_id_name, warehouse_start_id, warehouse_start_name, storehouse_start_id, storehouse_start_name, warehouse_end_id, warehouse_end_name, storehouse_end_id, storehouse_end_name, ledger_createtime
+    </sql>
+
+</mapper>

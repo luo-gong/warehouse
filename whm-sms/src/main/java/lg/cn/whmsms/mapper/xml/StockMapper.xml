@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmsms.mapper.StockMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        stock_id, product_id, product_code, product_name, product_spec, product_type_id, product_type_name, metering_id, metering_id_name, storehouse_id, storehouse_name, warehouse_id, warehouse_name
+    </sql>
+
+</mapper>
