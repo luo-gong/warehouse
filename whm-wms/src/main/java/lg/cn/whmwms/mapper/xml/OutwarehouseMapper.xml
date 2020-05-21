@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmwms.mapper.OutwarehouseMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        outwarehouse_id, outwarehouse_code, outwarehouse_type_id, outwarehouse_isDelete, order_id, order_code, order_createuser, order_createtime, order_remarks, order_number, order_auditor_state, order_auditor, order_auditor_time, storehouse_id, storehouse_name, product_id, product_code, product_name, product_batch, product_spec
+    </sql>
+
+    <!--    OutwarehouseUpdateTo getOutwarehouseByCode(String outwarehouseCode);-->
+    <!-- <resultMap id="outwarehouse" type="lg.cn.whmwms.entity.Movewarehouse">
+         <id column="movewarehouse_id" property="movewarehouseId"></id>
+         <result column="movewarehouse_code" property="movewarehouseCode"></result>
+         <result column="movewarehouse_type_id" property="movewarehouseTypeId"></result>
+         <result column="order_id" property="movewarehouseCode"></result>
+         <result column="order_code" property="movewarehouseCode"></result>
+         <result column="order_createuser" property="movewarehouseCode"></result>
+         <result column="order_createtime" property="movewarehouseCode"></result>
+         <result column="order_remarks" property="movewarehouseCode"></result>
+         <result column="orderNumber" property="movewarehouseCode"></result>
+         <result column="orderAuditorState" property="movewarehouseCode"></result>
+         <result column="orderAuditor" property="movewarehouseCode"></result>
+         <result column="order_auditor_time" property="movewarehouseCode"></result>
+         <result column="warehouseStartId" property="warehouseStartId"></result>
+         <result column="warehouse_start_name" property="movewarehouseCode"></result>
+         <result column="warehouse_start_name" property="movewarehouseCode"></result>
+         <result column="warehouse_start_name" property="movewarehouseCode"></result>
+         <result column="warehouse_start_name" property="movewarehouseCode"></result>
+     </resultMap>
+ -->
+</mapper>

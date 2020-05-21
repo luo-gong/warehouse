@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lg.cn.whmwms.mapper.MovewarehouseMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        movewarehouse_id, movewarehouse_code, movewarehouse_type_id, order_id, order_code, order_createuser, order_createtime, order_remarks, order_number, order_auditor_state, order_auditor, order_auditor_time, warehouse_start_id, warehouse_start_name, storehouse_start_id, storehouse_start_name, warehouse_new_id, warehouse_new_name, storehouse_new_id, storehouse_new_name, product_id, product_code, product_name, product_batch, product_spec
+    </sql>
+
+</mapper>
